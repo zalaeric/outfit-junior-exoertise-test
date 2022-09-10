@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.outfit7.services.ranked.RankedOpponentsServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-09-10T13:46:15" hostname="Zalas-MacBook-Air.local" time="1.279">
+  <properties/>
+  <testcase name="shouldRetrieveOpponentsForUserId()" classname="com.outfit7.services.ranked.RankedOpponentsServiceTest" time="1.279"/>
+  <system-out><![CDATA[User(id=1, playerName=name1, powerLevel=10, rank=100, hero=User.Hero(id=HeroId1, level=1, name=HeroName1), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+User(id=2, playerName=name1, powerLevel=11, rank=200, hero=User.Hero(id=HeroId2, level=2, name=HeroName2), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+User(id=3, playerName=name2, powerLevel=7, rank=225, hero=User.Hero(id=HeroId3, level=3, name=HeroName3), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+User(id=3, playerName=name2, powerLevel=4, rank=190, hero=User.Hero(id=HeroId3, level=3, name=HeroName3), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+User(id=4, playerName=name3, powerLevel=40, rank=120, hero=User.Hero(id=HeroId3, level=3, name=HeroName3), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+User(id=4, playerName=name3, powerLevel=35, rank=334, hero=User.Hero(id=HeroId3, level=3, name=HeroName3), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+User(id=5, playerName=name4, powerLevel=8, rank=170, hero=User.Hero(id=HeroId3, level=3, name=HeroName3), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+User(id=6, playerName=name4, powerLevel=9, rank=500, hero=User.Hero(id=HeroId4, level=4, name=HeroName4), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+User(id=7, playerName=name5, powerLevel=30, rank=139, hero=User.Hero(id=HeroId4, level=4, name=HeroName4), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+User(id=7, playerName=name5, powerLevel=13, rank=177, hero=User.Hero(id=HeroId5, level=5, name=HeroName5), champions=[User.Champion(id=ChampionId1, level=1, name=ChampionName1), User.Champion(id=ChampionId2, level=2, name=ChampionName2), User.Champion(id=ChampionId3, level=3, name=ChampionName3)])
+]]></system-out>
+  <system-err><![CDATA[Sep 10, 2022 3:46:16 PM com.outfit7.services.ranked.RankedOpponentsService matchOpponents
+INFO: Running ranked matcher for userId: 'some-user-id'
+]]></system-err>
+</testsuite>
