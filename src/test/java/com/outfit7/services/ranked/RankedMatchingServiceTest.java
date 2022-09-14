@@ -66,27 +66,6 @@ class RankedMatchingServiceTest {
         assertThat(opponents)
                 .hasSize(5)
                 .extracting(User::getId)
-                //.contains("2", "4", "7", "8", "9");
                 .isSubsetOf("2", "4", "7", "8", "9", "10");
     }
-
-    @Test
-    void checkForDuplicateOpponents() {
-        // Given
-        String userId = "some-user-id";
-
-        given(userService.get(eq(userId)))
-                .willReturn(user());
-        given(userService.getAll())
-                .willReturn(usersRanked());
-
-        // When
-        List<User> opponents = rankedMatchingService.retrieveOpponents(userId);
-
-        // Then
-        assertThat(opponents)
-                .extracting(User::getPlayerName)
-                .doesNotHaveDuplicates();
-    }
-
 }

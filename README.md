@@ -19,26 +19,25 @@ The first part of my exercise was to fix the part of the code that was the reaso
 
 The second part of my exercise was to fix the bug where the endpoint `/matching/classic/d7fc5c61-ac15-48ca-9b14-f3d8f55b1946` did not work as it should as the service returned duplicate opponents, which were in the instructions opponents with the same name.
 
-For this I added a unit test in class `ClassicMatchingServiceTest`, which specifically checked the player name attributes for duplicates in the returned opponents list. I continued onto debugging this by correcting the `distinctByKey` function in the `ClassicMatchingService` class which was wrongly comparing player names and IDs instead of player names to player names - a filter to compare the current user ID to opponent IDs was already implemented and working correctly. 
+For this I added a unit test in class `ClassicMatchingServiceTest`, which specifically checked the player name attributes for duplicates in the returned opponents list. I continued onto debugging this by correcting the `distinctByKey` function in the `ClassicMatchingService` class which was wrongly comparing player names and IDs instead of player names to player names. 
 
-After this fix I also changed the first test in `ClassicMatchingServiceTest` (`shouldRetrieveOpponentsForUserId`) because it did not return four opponents with IDs 2, 3, 5, 6 anymore as opponents with IDs 5 and 6 have the same name, "name4". It returned 3 opponents, the ones with IDs 2, 3 and 6.
+After this I also changed the first test in `ClassicMatchingServiceTest` (`shouldRetrieveOpponentsForUserId`) because it did not return four opponents with IDs 2, 3, 5, 6 anymore as opponents with IDs 5 and 6 have the same name, "name4". It returned 3 opponents, the ones with IDs 2, 3 and 6.
 
 ### Implement a new matching service for ranked mode.
 
 The third part of my exercise was to implement a new matching service for ranked mode following the pattern of `ClassicMatchingService`.
 
-I implemented a new endpoint for ranked mode: `/matching/ranked/{userId}`. I added three new classes in the source code, `RankedMatchingService`, `RankedOpponentsService` and `RankedMatchingFacade`, and sorted them into separate packages from the classic matching service mode for better structure. I mainly followed the given code in classic matching service mode to keep up the consistency.
+I implemented a new endpoint for ranked mode: `/matching/ranked/{userId}`. I added three new classes in the source code, `RankedMatchingService`, `RankedOpponentsService` and `RankedMatchingFacade`, and sorted them into separate packages from the classic matching service mode for better structure.
 
-The main difference in ranked mode is that the matched opponents are also flitered out by rank, as they have to be in the range +/- 100 rank points from the user making the request. I added the field `rank` in the User object and added random ranks to players in the mock database. I also kept all other filters from the classic matching service to filter out duplicates by name, filter out the user against himself, and filter out opponents with `powerLevel` outside of a range +/- 15 from the `powerLevel` of the user making the request. 
+I added the field `rank` in the User object as opponents have to be filtered by its value and added random ranks to players in the mock database. I also kept all other filters from the classic matching service.
 
-Ranked mode returns 5 randomized opponents for the user making the request and returns an error if there is a discrepancy so the client will know to retry the request.
+Ranked mode returns 5 randomized opponents for the user making the request and returns an error if there is a discrepancy, so the client will know to retry the request.
 
 I also added unit tests in the test directory, `RankedMatchingServiceTest`, `RankedOpponentsServiceTest` and `RankedMatchingFacadeTest`, again sorted in separate packeges. 
 
-The `RankedMatchingServiceTest` class contains three tests:
-- `shouldThrowExceptionIfRankedMatchingNotComplete`: checks whether the user gets the correct exception if the list of returned opponents is too short.
-- `shouldRetrieveOpponentsForUserId`: checks if the returned list of opponents is of correct size (5) and whether it is a correct subset of IDs. For this test, I added a method `usersRanked` in `TestUtils`, because the prewritten method of mock users (`users`) didn't return enough opponents, as it filtered out too many by `PowerLevel`, `PlayerName`, and `ID`.
-- `checkForDuplicateOpponents`: checks if there are duplicate player names in list of returned opponents.
+The `RankedMatchingServiceTest` class contains two tests:
+- `shouldThrowExceptionIfRankedMatchingNotComplete`: checks whether the user gets the correct exception if the list of returned opponents is too short and
+- `shouldRetrieveOpponentsForUserId`: checks if the returned list of opponents is of correct size (5) and whether it is a correct subset of IDs. For this test, I added a method `usersRanked` in `TestUtils`, because the prewritten method of mock users (`users`) didn't return enough opponents.
 
 ## Building and running the application
 
