@@ -12,10 +12,8 @@ import javax.inject.Inject;
 import com.outfit7.entity.User;
 
 import com.outfit7.services.UserService;
+import com.outfit7.services.ranked.exception.RankedMatchingNotCompleteException;
 import lombok.extern.slf4j.Slf4j;
-
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toCollection;
 
 @Slf4j
 @ApplicationScoped
@@ -31,11 +29,20 @@ public class RankedMatchingService {
     }
 
     private List<User> matchOpponents(User currentUser) {
-        return userService.getAll().stream()
+        List<User> matchedOpponents = userService.getAll().stream()
                 .filter(opponent -> !opponent.getId().equals(currentUser.getId()))
                 .filter(distinctByKey(User::getPlayerName))
                 .filter(filterByPowerLevel(currentUser))
                 .filter(filterByRank(currentUser))
+                .collect(Collectors.toList());
+
+        if (matchedOpponents.size() < 5)
+            throw new RankedMatchingNotCompleteException("Less than 5 opponents found. Try to rematch.");
+
+        Collections.shuffle(matchedOpponents);
+
+        return matchedOpponents.stream()
+                .limit(5)
                 .collect(Collectors.toList());
     }
 
@@ -55,6 +62,5 @@ public class RankedMatchingService {
         Set<Object> seen = ConcurrentHashMap.newKeySet();
         return t -> seen.add(t.getPlayerName());
     }
-
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.outfit7.rest.ranked.RankedMatchingFacadeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-09-14T08:40:09" hostname="Zalas-MacBook-Air.local" time="1.968">
+  <properties/>
+  <testcase name="shouldReturnOpponentsForSelectedUserId()" classname="com.outfit7.rest.ranked.RankedMatchingFacadeTest" time="1.968"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Sep 14, 2022 10:40:07 AM org.jboss.threads.Version <clinit>
+INFO: JBoss Threads version 3.1.1.Final
+Sep 14, 2022 10:40:08 AM org.jboss.threads.Version <clinit>
+INFO: JBoss Threads version 3.1.1.Final
+Sep 14, 2022 10:40:09 AM io.quarkus.runtime.Timing printStartupTime
+INFO: Quarkus 1.4.1.Final started in 2.656s. Listening on: http://0.0.0.0:8081
+Sep 14, 2022 10:40:09 AM io.quarkus.runtime.Timing printStartupTime
+INFO: Profile test activated. 
+Sep 14, 2022 10:40:09 AM io.quarkus.runtime.Timing printStartupTime
+INFO: Installed features: [cdi, resteasy, resteasy-jackson]
+]]></system-err>
+</testsuite>

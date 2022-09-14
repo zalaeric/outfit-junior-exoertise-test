@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.outfit7.services.UserServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-09-14T08:40:05" hostname="Zalas-MacBook-Air.local" time="0.348">
+  <properties/>
+  <testcase name="shouldReturnOneUser()" classname="com.outfit7.services.UserServiceTest" time="0.328"/>
+  <testcase name="shouldReturnAllUsers()" classname="com.outfit7.services.UserServiceTest" time="0.009"/>
+  <testcase name="shouldThrowExceptionIfUserDoesNotExist()" classname="com.outfit7.services.UserServiceTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

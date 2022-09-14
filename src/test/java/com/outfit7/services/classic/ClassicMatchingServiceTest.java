@@ -45,6 +45,12 @@ class ClassicMatchingServiceTest {
                 .extracting(User::getId)
                 .containsExactly("2", "3", "5");
                 /*
+                 * This test was corrected to not contain opponents with duplicate names,
+                 * so it has to return opponent list with opponents with IDs 2, 3 and 5,
+                 * as opponents with IDs 5 and 6 have the same name.
+                 *
+                 */
+                /*
                 .hasSize(4)
                 .extracting(User::getId)
                 .containsExactly("2", "3", "5", "6");
@@ -54,7 +60,7 @@ class ClassicMatchingServiceTest {
     @Test
     void checkForDuplicateOpponents() {
         // Given
-        String userId = "d7fc5c61-ac15-48ca-9b14-f3d8f55b1946";
+        String userId = "some-user-id";
 
         given(userService.get(eq(userId)))
                 .willReturn(user());

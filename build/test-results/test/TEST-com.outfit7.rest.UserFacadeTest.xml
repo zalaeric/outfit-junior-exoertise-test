@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.outfit7.rest.UserFacadeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-09-14T08:40:11" hostname="Zalas-MacBook-Air.local" time="0.095">
+  <properties/>
+  <testcase name="shouldThrowExceptionWhenUserDoesNotExist()" classname="com.outfit7.rest.UserFacadeTest" time="0.042"/>
+  <testcase name="shouldReturnUserForSelectedUserId()" classname="com.outfit7.rest.UserFacadeTest" time="0.029"/>
+  <testcase name="shouldReturnAllUsers()" classname="com.outfit7.rest.UserFacadeTest" time="0.02"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Sep 14, 2022 10:40:11 AM com.outfit7.services.classic.OpponentsService matchOpponents
+INFO: Running classic matcher for userId: 'some-user-id'
+]]></system-err>
+</testsuite>

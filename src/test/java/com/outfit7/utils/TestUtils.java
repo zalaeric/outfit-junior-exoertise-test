@@ -27,6 +27,20 @@ public class TestUtils {
                 User.builder().playerName("name5").powerLevel(13L).rank(177L).id("7").hero(hero(5L)).champions(champions()).build());
     }
 
+    public static List<User> usersRanked() {
+        return List.of(
+                User.builder().playerName("name1").powerLevel(10L).rank(100L).id("1").hero(hero(1L)).champions(champions()).build(),
+                User.builder().playerName("name2").powerLevel(11L).rank(200L).id("2").hero(hero(2L)).champions(champions()).build(),
+                User.builder().playerName("name2").powerLevel(7L).rank(125L).id("3").hero(hero(3L)).champions(champions()).build(),
+                User.builder().playerName("name3").powerLevel(4L).rank(190L).id("4").hero(hero(3L)).champions(champions()).build(),
+                User.builder().playerName("name4").powerLevel(40L).rank(120L).id("5").hero(hero(3L)).champions(champions()).build(),
+                User.builder().playerName("name5").powerLevel(10L).rank(334L).id("6").hero(hero(3L)).champions(champions()).build(),
+                User.builder().playerName("name6").powerLevel(8L).rank(70L).id("7").hero(hero(3L)).champions(champions()).build(),
+                User.builder().playerName("name7").powerLevel(23L).rank(200L).id("8").hero(hero(4L)).champions(champions()).build(),
+                User.builder().playerName("name8").powerLevel(24L).rank(139L).id("9").hero(hero(4L)).champions(champions()).build(),
+                User.builder().playerName("name9").powerLevel(13L).rank(177L).id("10").hero(hero(5L)).champions(champions()).build());
+    }
+
     public static Hero hero(Long level) {
         return Hero.builder()
                 .id("HeroId" + level)

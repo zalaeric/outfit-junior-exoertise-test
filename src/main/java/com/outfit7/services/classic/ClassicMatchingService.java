@@ -14,9 +14,6 @@ import com.outfit7.entity.User;
 import com.outfit7.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toCollection;
-
 @Slf4j
 @ApplicationScoped
 public class ClassicMatchingService {

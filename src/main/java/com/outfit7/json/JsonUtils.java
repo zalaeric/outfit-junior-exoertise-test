@@ -26,12 +26,10 @@ public class JsonUtils {
     }
 
     public static <T> List<T> deserializeToList(String json, Class<T> elementType) throws JAXBException {
-        System.out.println(json);
         return deserialize(json, constructListType(elementType));
     }
 
     public static <T> List<T> deserializeToList(InputStream inputStream, Class<T> elementType) throws JAXBException {
-        System.out.println(inputStream);
         return deserialize(inputStream, constructListType(elementType));
     }
 

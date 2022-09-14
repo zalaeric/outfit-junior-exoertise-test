@@ -1,84 +1,54 @@
 # Outfit7 Backend junior-expertise-test project
 
-Congratulations! You have just been hired to work on the backend for our newest RPG/strategy multiplayer game "Heroes of the Colosseum".
+This is my solution for the Outfit7 junior expertise test.
 
 The backend is a simple matching web service that provides endpoints for retrieving opponents.
 
-It consists of two main entry points:
+It consisted originally of two main entry points:
 
 - `UserFacade`: a utility endpoint to see all the data present in the database (DB is implemented as a simple json file)
 - `MatchingFacade`: the main (matching) functionality
 
-## Your mission:
-
-- Build the project,
-- Find & fix all the bugs,
-- Implement a new matching service for ranked mode.
+## My mission was to build the project, find and fix some bugs and implement a new matching service for ranked mode matching functionality.
 
 ### Build the project
 
-A developer pushed changes to our repository, but our CI system informed us that the code does not build. Find the error
-and fix it. Check the chapter [Building and running the application](#building-and-running-the-application).
+The first part of my exercise was to fix the part of the code that was the reason for the project not building. I added the lombok plugin and fixed a failing test, `UserServiceTest`, to look for the correct exception, which was an instance of `EntityNotFoundException` class. I also corrected the json file representing the database, which contained an extra comma.
 
-### Find & fix all the bugs
+### Find and fix the bugs
 
-During testing, our QA found out that the endpoint `/matching/classic/d7fc5c61-ac15-48ca-9b14-f3d8f55b1946` does not
-work as it should: the service returns duplicate opponents (opponents who have the same name).
+The second part of my exercise was to fix the bug where the endpoint `/matching/classic/d7fc5c61-ac15-48ca-9b14-f3d8f55b1946` did not work as it should as the service returned duplicate opponents, which were in the instructions opponents with the same name.
 
-Add a unit test to catch this case, find and fix the bug.
+For this I added a unit test in class `ClassicMatchingServiceTest`, which specifically checked the player name attributes for duplicates in the returned opponents list. I continued onto debugging this by correcting the `distinctByKey` function in the `ClassicMatchingService` class which was wrongly comparing player names and IDs instead of player names to player names - a filter to compare the current user ID to opponent IDs was already implemented and working correctly. 
+
+After this fix I also changed the first test in `ClassicMatchingServiceTest` (`shouldRetrieveOpponentsForUserId`) because it did not return four opponents with IDs 2, 3, 5, 6 anymore as opponents with IDs 5 and 6 have the same name, "name4". It returned 3 opponents, the ones with IDs 2, 3 and 6.
 
 ### Implement a new matching service for ranked mode.
 
-Following the patterns in the project (take a look at usages of `ClassicMatchingService`) implement a new matching
-service for ranked mode.
+The third part of my exercise was to implement a new matching service for ranked mode following the pattern of `ClassicMatchingService`.
 
-Implement a new endpoint for ranked mode: `/matching/ranked/{userId}`
+I implemented a new endpoint for ranked mode: `/matching/ranked/{userId}`. I added three new classes in the source code, `RankedMatchingService`, `RankedOpponentsService` and `RankedMatchingFacade`, and sorted them into separate packages from the classic matching service mode for better structure. I mainly followed the given code in classic matching service mode to keep up the consistency.
 
-Ranked mode should return 5 opponents for the user making the request, otherwise return an error so the client will
-know to retry the request.
-Opponents should be matched by `rank`, check the structure of the data in the example below and add a new field to
-the `User` object.
-Opponents must be in the same rank range as the player making the request: +/- 100 rank points.
-Filter out duplicates by name, don't match the user against himself, and randomize the results
-so users get a different set of opponents at each request.
+The main difference in ranked mode is that the matched opponents are also flitered out by rank, as they have to be in the range +/- 100 rank points from the user making the request. I added the field `rank` in the User object and added random ranks to players in the mock database. I also kept all other filters from the classic matching service to filter out duplicates by name, filter out the user against himself, and filter out opponents with `powerLevel` outside of a range +/- 15 from the `powerLevel` of the user making the request. 
 
-Don't forget to write unit tests :)
+Ranked mode returns 5 randomized opponents for the user making the request and returns an error if there is a discrepancy so the client will know to retry the request.
 
-```
-// The sample data is already populated with values in the 'rank' field
-{
-    "id": "d7fc5c61-ac15-48ca-9b14-f3d8f55b1946",
-    "playerName": "Clodomir Hairyfoot",
-    "powerLevel": 1,
-    "rank": 7,
-    "hero": {
-        "id": "0192a218-7a7d-456c-bd49-d06a8a69b762",
-        "level": 31,
-        "name": "Hal"
-    },
-    "champions": [
-        {
-            "id": "2e521a1e-2bd0-4dae-a6dd-96159e599d3e",
-            "level": 3,
-            "name": "Maxhere"
-        }
-    ]
-}
-```
+I also added unit tests in the test directory, `RankedMatchingServiceTest`, `RankedOpponentsServiceTest` and `RankedMatchingFacadeTest`, again sorted in separate packeges. 
 
-## Submitting your solution:
-
-Please send us either a zip archive or a link to project on github/bitbucket.
+The `RankedMatchingServiceTest` class contains three tests:
+- `shouldThrowExceptionIfRankedMatchingNotComplete`: checks whether the user gets the correct exception if the list of returned opponents is too short.
+- `shouldRetrieveOpponentsForUserId`: checks if the returned list of opponents is of correct size (5) and whether it is a correct subset of IDs. For this test, I added a method `usersRanked` in `TestUtils`, because the prewritten method of mock users (`users`) didn't return enough opponents, as it filtered out too many by `PowerLevel`, `PlayerName`, and `ID`.
+- `checkForDuplicateOpponents`: checks if there are duplicate player names in list of returned opponents.
 
 ## Building and running the application
 
-You can test/build your application using:
+You can test/build the application using:
 ```
 ./gradlew test
 ./gradlew build
 ```
 
-You can run your application in dev mode that enables live coding using:
+You can run the application in dev mode that enables live coding using:
 ```
 ./gradlew quarkusDev
 ```

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.outfit7.services.ranked.RankedMatchingServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-09-14T08:40:04" hostname="Zalas-MacBook-Air.local" time="0.94">
+  <properties/>
+  <testcase name="checkForDuplicateOpponents()" classname="com.outfit7.services.ranked.RankedMatchingServiceTest" time="0.923"/>
+  <testcase name="shouldRetrieveOpponentsForUserId()" classname="com.outfit7.services.ranked.RankedMatchingServiceTest" time="0.008"/>
+  <testcase name="shouldThrowExceptionIfRankedMatchingNotComplete()" classname="com.outfit7.services.ranked.RankedMatchingServiceTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

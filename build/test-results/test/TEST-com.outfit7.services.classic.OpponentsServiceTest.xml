@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.outfit7.services.classic.OpponentsServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-09-14T08:40:06" hostname="Zalas-MacBook-Air.local" time="0.03">
+  <properties/>
+  <testcase name="shouldRetrieveOpponentsForUserId()" classname="com.outfit7.services.classic.OpponentsServiceTest" time="0.03"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Sep 14, 2022 10:40:06 AM com.outfit7.services.classic.OpponentsService matchOpponents
+INFO: Running classic matcher for userId: 'some-user-id'
+]]></system-err>
+</testsuite>

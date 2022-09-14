@@ -1,4 +1,4 @@
-package com.outfit7.rest;
+package com.outfit7.rest.classic;
 
 import static com.outfit7.utils.TestUtils.users;
 import static io.restassured.RestAssured.given;
